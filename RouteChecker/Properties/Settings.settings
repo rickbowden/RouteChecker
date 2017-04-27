@@ -46,7 +46,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="UpdateUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">https://github.com/rickbowden/RouteChecker/releases/latest</Value>
     </Setting>
     <Setting Name="UpgradeRequired" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>

@@ -29,6 +29,26 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,29 +73,44 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.InboundTAB = new System.Windows.Forms.TabPage();
             this.OutboundTAB = new System.Windows.Forms.TabPage();
             this.Outbound_DataGrid = new System.Windows.Forms.DataGridView();
-            this.Port_In = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Source_In = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SourceIP_In = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dest_In = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DestIP_In = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DestSG_In = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DestProtocol_In = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DestPortRange_In = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DestCIDR_In = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Port_Out = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InboundTAB = new System.Windows.Forms.TabPage();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.Analyze_BTN = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.Protocol_TB = new System.Windows.Forms.TextBox();
+            this.Cache_BTN = new System.Windows.Forms.Button();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.versionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Source_Out = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SourceIP_Out = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SourceSG_Out = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SourceProtocol_Out = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SourcePortRange_Out = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SourceCidr_Out = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Protocol_Out = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Port_Out = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dest_Out = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DestIP_Out = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.button1 = new System.Windows.Forms.Button();
+            this.Comments_Out = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Source_In = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SourceIP_In = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Protocol_In = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Port_In = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dest_In = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DestIP_In = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DestSG_In = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DestProtocol_In = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DestPortRange_In = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DestCIDR_In = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Comments_In = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -85,18 +120,22 @@
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.InboundTAB.SuspendLayout();
             this.OutboundTAB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Outbound_DataGrid)).BeginInit();
+            this.InboundTAB.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolsToolStripMenuItem});
+            this.toolsToolStripMenuItem,
+            this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1180, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1287, 28);
             this.menuStrip1.TabIndex = 13;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -138,15 +177,13 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.AssumeRole_CBB);
             this.groupBox2.Controls.Add(this.Profile_CBB);
             this.groupBox2.Location = new System.Drawing.Point(261, 40);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(907, 71);
+            this.groupBox2.Size = new System.Drawing.Size(1013, 71);
             this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Authentication:";
@@ -174,7 +211,7 @@
             this.AssumeRole_CBB.FormattingEnabled = true;
             this.AssumeRole_CBB.Location = new System.Drawing.Point(542, 27);
             this.AssumeRole_CBB.Name = "AssumeRole_CBB";
-            this.AssumeRole_CBB.Size = new System.Drawing.Size(351, 24);
+            this.AssumeRole_CBB.Size = new System.Drawing.Size(455, 24);
             this.AssumeRole_CBB.TabIndex = 5;
             this.AssumeRole_CBB.Text = "none";
             this.AssumeRole_CBB.SelectedIndexChanged += new System.EventHandler(this.AssumeRole_CBB_SelectedIndexChanged);
@@ -191,11 +228,12 @@
             // 
             // Submit_BTN
             // 
-            this.Submit_BTN.Location = new System.Drawing.Point(12, 126);
+            this.Submit_BTN.Location = new System.Drawing.Point(12, 330);
             this.Submit_BTN.Name = "Submit_BTN";
             this.Submit_BTN.Size = new System.Drawing.Size(75, 25);
             this.Submit_BTN.TabIndex = 16;
-            this.Submit_BTN.Text = "Submit";
+            this.Submit_BTN.Text = "Get Info";
+            this.toolTip1.SetToolTip(this.Submit_BTN, "Get security group and instance information from AWS.");
             this.Submit_BTN.UseVisualStyleBackColor = true;
             this.Submit_BTN.Click += new System.EventHandler(this.Submit_BTN_Click);
             // 
@@ -210,19 +248,21 @@
             this.Inbound_DataGrid.BackgroundColor = System.Drawing.Color.White;
             this.Inbound_DataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Inbound_DataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Port_In,
             this.Source_In,
             this.SourceIP_In,
+            this.Protocol_In,
+            this.Port_In,
             this.Dest_In,
             this.DestIP_In,
             this.DestSG_In,
             this.DestProtocol_In,
             this.DestPortRange_In,
-            this.DestCIDR_In});
+            this.DestCIDR_In,
+            this.Comments_In});
             this.Inbound_DataGrid.Location = new System.Drawing.Point(3, 3);
             this.Inbound_DataGrid.Name = "Inbound_DataGrid";
             this.Inbound_DataGrid.RowTemplate.Height = 24;
-            this.Inbound_DataGrid.Size = new System.Drawing.Size(1141, 281);
+            this.Inbound_DataGrid.Size = new System.Drawing.Size(1244, 301);
             this.Inbound_DataGrid.TabIndex = 17;
             // 
             // statusStrip1
@@ -232,7 +272,7 @@
             this.Status_LB});
             this.statusStrip1.Location = new System.Drawing.Point(0, 727);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1180, 25);
+            this.statusStrip1.Size = new System.Drawing.Size(1287, 25);
             this.statusStrip1.TabIndex = 18;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -273,6 +313,7 @@
             this.Source_TB.Size = new System.Drawing.Size(184, 152);
             this.Source_TB.TabIndex = 19;
             this.Source_TB.Text = "172.23.36.46";
+            this.toolTip1.SetToolTip(this.Source_TB, "IP address or instance name");
             this.Source_TB.WordWrap = false;
             // 
             // Dest_TB
@@ -287,6 +328,7 @@
             this.Dest_TB.Size = new System.Drawing.Size(178, 152);
             this.Dest_TB.TabIndex = 20;
             this.Dest_TB.Text = "172.23.36.82";
+            this.toolTip1.SetToolTip(this.Dest_TB, "IP address or instance name");
             this.Dest_TB.WordWrap = false;
             // 
             // Port_TB
@@ -302,11 +344,12 @@
             this.Port_TB.TabIndex = 21;
             this.Port_TB.Text = "16163";
             this.Port_TB.WordWrap = false;
+            this.Port_TB.TextChanged += new System.EventHandler(this.Port_TB_TextChanged);
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.Source_TB);
-            this.groupBox3.Location = new System.Drawing.Point(13, 169);
+            this.groupBox3.Location = new System.Drawing.Point(13, 125);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(213, 194);
             this.groupBox3.TabIndex = 22;
@@ -316,7 +359,7 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.Port_TB);
-            this.groupBox4.Location = new System.Drawing.Point(584, 169);
+            this.groupBox4.Location = new System.Drawing.Point(517, 125);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(213, 194);
             this.groupBox4.TabIndex = 23;
@@ -326,7 +369,7 @@
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.Dest_TB);
-            this.groupBox5.Location = new System.Drawing.Point(300, 169);
+            this.groupBox5.Location = new System.Drawing.Point(261, 125);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(213, 194);
             this.groupBox5.TabIndex = 24;
@@ -340,22 +383,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.OutboundTAB);
             this.tabControl1.Controls.Add(this.InboundTAB);
-            this.tabControl1.Location = new System.Drawing.Point(13, 391);
+            this.tabControl1.Location = new System.Drawing.Point(13, 371);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1155, 319);
+            this.tabControl1.Size = new System.Drawing.Size(1261, 339);
             this.tabControl1.TabIndex = 25;
-            // 
-            // InboundTAB
-            // 
-            this.InboundTAB.Controls.Add(this.Inbound_DataGrid);
-            this.InboundTAB.Location = new System.Drawing.Point(4, 25);
-            this.InboundTAB.Name = "InboundTAB";
-            this.InboundTAB.Padding = new System.Windows.Forms.Padding(3);
-            this.InboundTAB.Size = new System.Drawing.Size(1147, 290);
-            this.InboundTAB.TabIndex = 0;
-            this.InboundTAB.Text = "Destination Inbound Rules";
-            this.InboundTAB.UseVisualStyleBackColor = true;
             // 
             // OutboundTAB
             // 
@@ -363,9 +395,10 @@
             this.OutboundTAB.Location = new System.Drawing.Point(4, 25);
             this.OutboundTAB.Name = "OutboundTAB";
             this.OutboundTAB.Padding = new System.Windows.Forms.Padding(3);
-            this.OutboundTAB.Size = new System.Drawing.Size(1147, 290);
+            this.OutboundTAB.Size = new System.Drawing.Size(1253, 310);
             this.OutboundTAB.TabIndex = 1;
             this.OutboundTAB.Text = "Source Outbound Rules";
+            this.toolTip1.SetToolTip(this.OutboundTAB, "Outbound rules for the source instances.");
             this.OutboundTAB.UseVisualStyleBackColor = true;
             // 
             // Outbound_DataGrid
@@ -379,127 +412,323 @@
             this.Outbound_DataGrid.BackgroundColor = System.Drawing.Color.White;
             this.Outbound_DataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Outbound_DataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Port_Out,
             this.Source_Out,
             this.SourceIP_Out,
             this.SourceSG_Out,
             this.SourceProtocol_Out,
             this.SourcePortRange_Out,
             this.SourceCidr_Out,
+            this.Protocol_Out,
+            this.Port_Out,
             this.Dest_Out,
-            this.DestIP_Out});
+            this.DestIP_Out,
+            this.Comments_Out});
             this.Outbound_DataGrid.Location = new System.Drawing.Point(3, 5);
             this.Outbound_DataGrid.Name = "Outbound_DataGrid";
             this.Outbound_DataGrid.RowTemplate.Height = 24;
-            this.Outbound_DataGrid.Size = new System.Drawing.Size(1141, 281);
+            this.Outbound_DataGrid.Size = new System.Drawing.Size(1247, 301);
             this.Outbound_DataGrid.TabIndex = 18;
             // 
-            // Port_In
+            // InboundTAB
             // 
-            this.Port_In.HeaderText = "Port";
-            this.Port_In.Name = "Port_In";
+            this.InboundTAB.Controls.Add(this.Inbound_DataGrid);
+            this.InboundTAB.Location = new System.Drawing.Point(4, 25);
+            this.InboundTAB.Name = "InboundTAB";
+            this.InboundTAB.Padding = new System.Windows.Forms.Padding(3);
+            this.InboundTAB.Size = new System.Drawing.Size(1253, 310);
+            this.InboundTAB.TabIndex = 0;
+            this.InboundTAB.Text = "Destination Inbound Rules";
+            this.toolTip1.SetToolTip(this.InboundTAB, "Inbound rules for the destination instances.");
+            this.InboundTAB.UseVisualStyleBackColor = true;
             // 
-            // Source_In
+            // Analyze_BTN
             // 
-            this.Source_In.HeaderText = "Source";
-            this.Source_In.Name = "Source_In";
+            this.Analyze_BTN.Location = new System.Drawing.Point(109, 330);
+            this.Analyze_BTN.Name = "Analyze_BTN";
+            this.Analyze_BTN.Size = new System.Drawing.Size(75, 25);
+            this.Analyze_BTN.TabIndex = 26;
+            this.Analyze_BTN.Text = "Analyze";
+            this.toolTip1.SetToolTip(this.Analyze_BTN, "Check for rule matches.");
+            this.Analyze_BTN.UseVisualStyleBackColor = true;
+            this.Analyze_BTN.Click += new System.EventHandler(this.Analyze_BTN_Click);
             // 
-            // SourceIP_In
+            // groupBox6
             // 
-            this.SourceIP_In.HeaderText = "Source IP";
-            this.SourceIP_In.Name = "SourceIP_In";
+            this.groupBox6.Controls.Add(this.Protocol_TB);
+            this.groupBox6.Location = new System.Drawing.Point(768, 125);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(213, 194);
+            this.groupBox6.TabIndex = 24;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Protocol";
             // 
-            // Dest_In
+            // Protocol_TB
             // 
-            this.Dest_In.HeaderText = "Destination";
-            this.Dest_In.Name = "Dest_In";
+            this.Protocol_TB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Protocol_TB.Location = new System.Drawing.Point(16, 30);
+            this.Protocol_TB.Multiline = true;
+            this.Protocol_TB.Name = "Protocol_TB";
+            this.Protocol_TB.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.Protocol_TB.Size = new System.Drawing.Size(182, 152);
+            this.Protocol_TB.TabIndex = 21;
+            this.Protocol_TB.Text = "tcp";
+            this.Protocol_TB.WordWrap = false;
             // 
-            // DestIP_In
+            // Cache_BTN
             // 
-            this.DestIP_In.HeaderText = "Destination IP";
-            this.DestIP_In.Name = "DestIP_In";
+            this.Cache_BTN.Enabled = false;
+            this.Cache_BTN.Location = new System.Drawing.Point(209, 330);
+            this.Cache_BTN.Name = "Cache_BTN";
+            this.Cache_BTN.Size = new System.Drawing.Size(97, 25);
+            this.Cache_BTN.TabIndex = 27;
+            this.Cache_BTN.Text = "Clear Cache";
+            this.toolTip1.SetToolTip(this.Cache_BTN, "Clears the cache. \'Get Info\' will reload info from AWS.");
+            this.Cache_BTN.UseVisualStyleBackColor = true;
+            this.Cache_BTN.Click += new System.EventHandler(this.Cache_BTN_Click);
             // 
-            // DestSG_In
+            // helpToolStripMenuItem
             // 
-            this.DestSG_In.HeaderText = "Destination SG";
-            this.DestSG_In.Name = "DestSG_In";
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.versionToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
+            this.helpToolStripMenuItem.Text = "Help";
             // 
-            // DestProtocol_In
+            // versionToolStripMenuItem
             // 
-            this.DestProtocol_In.HeaderText = "Protocol";
-            this.DestProtocol_In.Name = "DestProtocol_In";
-            // 
-            // DestPortRange_In
-            // 
-            this.DestPortRange_In.HeaderText = "Port Range";
-            this.DestPortRange_In.Name = "DestPortRange_In";
-            // 
-            // DestCIDR_In
-            // 
-            this.DestCIDR_In.HeaderText = "CIDR/Group";
-            this.DestCIDR_In.Name = "DestCIDR_In";
-            // 
-            // Port_Out
-            // 
-            this.Port_Out.HeaderText = "Port";
-            this.Port_Out.Name = "Port_Out";
+            this.versionToolStripMenuItem.Name = "versionToolStripMenuItem";
+            this.versionToolStripMenuItem.Size = new System.Drawing.Size(152, 24);
+            this.versionToolStripMenuItem.Text = "Version";
+            this.versionToolStripMenuItem.Click += new System.EventHandler(this.versionToolStripMenuItem_Click);
             // 
             // Source_Out
             // 
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Source_Out.DefaultCellStyle = dataGridViewCellStyle11;
             this.Source_Out.HeaderText = "Source";
             this.Source_Out.Name = "Source_Out";
             // 
             // SourceIP_Out
             // 
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.SourceIP_Out.DefaultCellStyle = dataGridViewCellStyle12;
             this.SourceIP_Out.HeaderText = "Source IP";
             this.SourceIP_Out.Name = "SourceIP_Out";
             // 
             // SourceSG_Out
             // 
-            this.SourceSG_Out.HeaderText = "Source SG";
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.SourceSG_Out.DefaultCellStyle = dataGridViewCellStyle13;
+            this.SourceSG_Out.HeaderText = "SG";
             this.SourceSG_Out.Name = "SourceSG_Out";
             // 
             // SourceProtocol_Out
             // 
-            this.SourceProtocol_Out.HeaderText = "Protcol";
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.SourceProtocol_Out.DefaultCellStyle = dataGridViewCellStyle14;
+            this.SourceProtocol_Out.HeaderText = "SG Protcol";
             this.SourceProtocol_Out.Name = "SourceProtocol_Out";
             // 
             // SourcePortRange_Out
             // 
-            this.SourcePortRange_Out.HeaderText = "Port Range";
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.SourcePortRange_Out.DefaultCellStyle = dataGridViewCellStyle15;
+            this.SourcePortRange_Out.HeaderText = "SG Port Range";
             this.SourcePortRange_Out.Name = "SourcePortRange_Out";
             // 
             // SourceCidr_Out
             // 
-            this.SourceCidr_Out.HeaderText = "CIDR/Group";
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.SourceCidr_Out.DefaultCellStyle = dataGridViewCellStyle16;
+            this.SourceCidr_Out.HeaderText = "SG Source";
             this.SourceCidr_Out.Name = "SourceCidr_Out";
+            // 
+            // Protocol_Out
+            // 
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.White;
+            this.Protocol_Out.DefaultCellStyle = dataGridViewCellStyle17;
+            this.Protocol_Out.HeaderText = "Protocol";
+            this.Protocol_Out.Name = "Protocol_Out";
+            // 
+            // Port_Out
+            // 
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.White;
+            this.Port_Out.DefaultCellStyle = dataGridViewCellStyle18;
+            this.Port_Out.HeaderText = "Port";
+            this.Port_Out.Name = "Port_Out";
             // 
             // Dest_Out
             // 
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.Dest_Out.DefaultCellStyle = dataGridViewCellStyle19;
             this.Dest_Out.HeaderText = "Destination";
             this.Dest_Out.Name = "Dest_Out";
             // 
             // DestIP_Out
             // 
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.DestIP_Out.DefaultCellStyle = dataGridViewCellStyle20;
             this.DestIP_Out.HeaderText = "Destination IP";
             this.DestIP_Out.Name = "DestIP_Out";
             // 
-            // button1
+            // Comments_Out
             // 
-            this.button1.Location = new System.Drawing.Point(381, 382);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 26;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Comments_Out.HeaderText = "Comments";
+            this.Comments_Out.Name = "Comments_Out";
+            // 
+            // Source_In
+            // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Source_In.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Source_In.HeaderText = "Source";
+            this.Source_In.Name = "Source_In";
+            // 
+            // SourceIP_In
+            // 
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.SourceIP_In.DefaultCellStyle = dataGridViewCellStyle2;
+            this.SourceIP_In.HeaderText = "Source IP";
+            this.SourceIP_In.Name = "SourceIP_In";
+            // 
+            // Protocol_In
+            // 
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Protocol_In.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Protocol_In.HeaderText = "Protocol";
+            this.Protocol_In.Name = "Protocol_In";
+            // 
+            // Port_In
+            // 
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Port_In.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Port_In.HeaderText = "Port";
+            this.Port_In.Name = "Port_In";
+            // 
+            // Dest_In
+            // 
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.Dest_In.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Dest_In.HeaderText = "Destination";
+            this.Dest_In.Name = "Dest_In";
+            // 
+            // DestIP_In
+            // 
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.DestIP_In.DefaultCellStyle = dataGridViewCellStyle6;
+            this.DestIP_In.HeaderText = "Destination IP";
+            this.DestIP_In.Name = "DestIP_In";
+            // 
+            // DestSG_In
+            // 
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.DestSG_In.DefaultCellStyle = dataGridViewCellStyle7;
+            this.DestSG_In.HeaderText = "SG";
+            this.DestSG_In.Name = "DestSG_In";
+            // 
+            // DestProtocol_In
+            // 
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.DestProtocol_In.DefaultCellStyle = dataGridViewCellStyle8;
+            this.DestProtocol_In.HeaderText = "SG Protocol";
+            this.DestProtocol_In.Name = "DestProtocol_In";
+            // 
+            // DestPortRange_In
+            // 
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.DestPortRange_In.DefaultCellStyle = dataGridViewCellStyle9;
+            this.DestPortRange_In.HeaderText = "SG Port Range";
+            this.DestPortRange_In.Name = "DestPortRange_In";
+            // 
+            // DestCIDR_In
+            // 
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.DestCIDR_In.DefaultCellStyle = dataGridViewCellStyle10;
+            this.DestCIDR_In.HeaderText = "SG Source";
+            this.DestCIDR_In.Name = "DestCIDR_In";
+            // 
+            // Comments_In
+            // 
+            this.Comments_In.HeaderText = "Comments";
+            this.Comments_In.Name = "Comments_In";
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.tableLayoutPanel1);
+            this.groupBox7.Location = new System.Drawing.Point(1008, 135);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(266, 184);
+            this.groupBox7.TabIndex = 28;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Key";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label3.Location = new System.Drawing.Point(9, 6);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(48, 17);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Yellow";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(92, 6);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(126, 34);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Partial rule match. Traffic blocked";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.33905F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 62.66095F));
+            this.tableLayoutPanel1.Controls.Add(this.label6, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label4, 1, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(17, 21);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(5);
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(233, 151);
+            this.tableLayoutPanel1.TabIndex = 2;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label5.Location = new System.Drawing.Point(9, 76);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(48, 17);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Green";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(92, 76);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(108, 34);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Full rule match. Traffic allowed.";
             // 
             // App
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1180, 752);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(1287, 752);
+            this.Controls.Add(this.groupBox7);
+            this.Controls.Add(this.Cache_BTN);
+            this.Controls.Add(this.groupBox6);
+            this.Controls.Add(this.Analyze_BTN);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
@@ -510,7 +739,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.groupBox3);
             this.Name = "App";
-            this.Text = "Form1";
+            this.Text = "Route Checker";
             this.Load += new System.EventHandler(this.App_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -527,9 +756,14 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.tabControl1.ResumeLayout(false);
-            this.InboundTAB.ResumeLayout(false);
             this.OutboundTAB.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Outbound_DataGrid)).EndInit();
+            this.InboundTAB.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -565,26 +799,41 @@
         private System.Windows.Forms.TabPage InboundTAB;
         private System.Windows.Forms.TabPage OutboundTAB;
         private System.Windows.Forms.DataGridView Outbound_DataGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Port_In;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button Analyze_BTN;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.TextBox Protocol_TB;
+        private System.Windows.Forms.Button Cache_BTN;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem versionToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn Source_In;
         private System.Windows.Forms.DataGridViewTextBoxColumn SourceIP_In;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Protocol_In;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Port_In;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dest_In;
         private System.Windows.Forms.DataGridViewTextBoxColumn DestIP_In;
         private System.Windows.Forms.DataGridViewTextBoxColumn DestSG_In;
         private System.Windows.Forms.DataGridViewTextBoxColumn DestProtocol_In;
         private System.Windows.Forms.DataGridViewTextBoxColumn DestPortRange_In;
         private System.Windows.Forms.DataGridViewTextBoxColumn DestCIDR_In;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Port_Out;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Comments_In;
         private System.Windows.Forms.DataGridViewTextBoxColumn Source_Out;
         private System.Windows.Forms.DataGridViewTextBoxColumn SourceIP_Out;
         private System.Windows.Forms.DataGridViewTextBoxColumn SourceSG_Out;
         private System.Windows.Forms.DataGridViewTextBoxColumn SourceProtocol_Out;
         private System.Windows.Forms.DataGridViewTextBoxColumn SourcePortRange_Out;
         private System.Windows.Forms.DataGridViewTextBoxColumn SourceCidr_Out;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Protocol_Out;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Port_Out;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dest_Out;
         private System.Windows.Forms.DataGridViewTextBoxColumn DestIP_Out;
-        private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Comments_Out;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
     }
 }
 

@@ -126,7 +126,7 @@ namespace RouteChecker.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/rickbowden/RouteChecker/releases/latest")]
         public string UpdateUrl {
             get {
                 return ((string)(this["UpdateUrl"]));

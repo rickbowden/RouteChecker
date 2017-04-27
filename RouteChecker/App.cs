@@ -29,8 +29,9 @@ namespace RouteChecker
         static string UserName = Environment.UserName;
         static string AppName = "RouteChecker";
 
-        static bool CheckLineByLine = false; // Used to determine whether to check only line by line or to check every source against every destination for every port.
-                
+        //static bool CheckLineByLine = false; // Used to determine whether to check only line by line or to check every source against every destination for every port.
+             
+
         List<Instance> SourceInstances = new List<Instance>();
         List<Instance> DestInstances = new List<Instance>();
         List<SecurityGroup> SecGroups;
@@ -41,7 +42,8 @@ namespace RouteChecker
             InitializeComponent();
 
             try
-            {
+            {   
+                
                 if (Properties.Settings.Default.UpgradeRequired)
                 {
                     Properties.Settings.Default.Upgrade();
@@ -108,21 +110,14 @@ namespace RouteChecker
                 Outbound_DataGrid.Rows.Clear();
 
                 //Clear Lists
-                SourceInstances.Clear();
-                DestInstances.Clear();
+                //SourceInstances.Clear();
+                //DestInstances.Clear();
                 
-
                 Submit_BTN.Enabled = false;
 
+                // Run In Background
+                backgroundWorker1.RunWorkerAsync();
                 
-
-
-                //foreach (string item in Source_TB.Lines)
-                //{
-                    backgroundWorker1.RunWorkerAsync();
-                //}
-
-
             }
             catch (Exception ex)
             {
@@ -348,23 +343,26 @@ namespace RouteChecker
 
         void PopulateInstanceLists(string instance, ref List<Instance> instanceList)
         {
-            DescribeInstancesResponse response = GetInstances(BuildFilter(instance));
-            Instance i = new Instance();
-            if (response.Reservations.Count == 0)
+            if (instance != null && instance != "")
             {
-                i.IsInstance = false;
-                i.IpAddress = instance;
-                i.Name = "External IP";
+                DescribeInstancesResponse response = GetInstances(BuildFilter(instance));
+                Instance i = new Instance();
+                if (response.Reservations.Count == 0)
+                {
+                    i.IsInstance = false;
+                    i.IpAddress = instance;
+                    i.Name = "External IP";
+                }
+                else
+                {
+                    i.IsInstance = true;
+                    i.IpAddress = response.Reservations[0].Instances[0].PrivateIpAddress;
+                    i.InstanceId = response.Reservations[0].Instances[0].InstanceId;
+                    i.SecurityGroups = response.Reservations[0].Instances[0].SecurityGroups;
+                    i.Name = (Utils.GetEC2PropFromString("name", response.Reservations[0].Instances[0]));
+                }
+                instanceList.Add(i); 
             }
-            else
-            {
-                i.IsInstance = true;
-                i.IpAddress = response.Reservations[0].Instances[0].PrivateIpAddress;
-                i.InstanceId = response.Reservations[0].Instances[0].InstanceId;
-                i.SecurityGroups = response.Reservations[0].Instances[0].SecurityGroups;
-                i.Name = (Utils.GetEC2PropFromString("name", response.Reservations[0].Instances[0]));
-            }
-            instanceList.Add(i);
         }
 
         DescribeSecurityGroupsResponse GetSecurityGroups()
@@ -538,17 +536,39 @@ namespace RouteChecker
         //}
 
 
-        void DisplayResults()
+        void BuildGridDisplay()
         {
-            int i = 0;
-            foreach (string line in Source_TB.Lines)
-            { 
-                
-                // If this is an instance, not just an IP
-                if (SourceInstances[i].IsInstance)
+            
+            int looptimes = Math.Max(Source_TB.Lines.Length, Dest_TB.Lines.Length); 
+           
+            for (int i = 0; i < looptimes; i++)
+            {                
+                // Find Source Instance using IP or Name
+                Instance sourceInstance;
+                if (Source_TB.Lines.Length > i)
                 {
-                                        
-                    foreach (GroupIdentifier sgi in SourceInstances[i].SecurityGroups)
+                    sourceInstance = SourceInstances.Find(x => x != null && (x.IpAddress == Source_TB.Lines[i] || x.Name == Source_TB.Lines[i]));
+                }
+                else
+                {
+                    sourceInstance = SourceInstances.Find(x => x != null && (x.IpAddress == Source_TB.Lines[Source_TB.Lines.Length - 1] || x.Name == Source_TB.Lines[Source_TB.Lines.Length - 1]));
+                }
+                // Find Destination Instance using IP
+                Instance destinationInstance;
+                if (Dest_TB.Lines.Length > i)
+                {
+                    destinationInstance = DestInstances.Find(x => x != null && (x.IpAddress == Dest_TB.Lines[i] || x.Name == Dest_TB.Lines[i]));
+                }
+                else
+                {
+                    destinationInstance = DestInstances.Find(x => x != null && (x.IpAddress == Dest_TB.Lines[Dest_TB.Lines.Length - 1] || x.Name == Dest_TB.Lines[Dest_TB.Lines.Length - 1]));
+                }
+
+                // If this is an instance, not just an IP
+                if (sourceInstance.IsInstance)
+                {
+
+                    foreach (GroupIdentifier sgi in sourceInstance.SecurityGroups)
                     {                        
                         SecurityGroup sg = SecGroups.Find(x => x.GroupId == sgi.GroupId);
                         if (sg != null)
@@ -561,9 +581,10 @@ namespace RouteChecker
                                 {
                                     DataGridViewRow row = new DataGridViewRow();
                                     int rowNumber = Outbound_DataGrid.Rows.Add(row);
-                                    Outbound_DataGrid.Rows[rowNumber].Cells["Port_Out"].Value = Port_TB.Lines[i];
-                                    Outbound_DataGrid.Rows[rowNumber].Cells["Source_Out"].Value = SourceInstances[i].Name;
-                                    Outbound_DataGrid.Rows[rowNumber].Cells["SourceIP_Out"].Value = SourceInstances[i].IpAddress;
+                                    if (Protocol_TB.Lines.Length > i) { Outbound_DataGrid.Rows[rowNumber].Cells["Protocol_Out"].Value = Protocol_TB.Lines[i]; } else { Outbound_DataGrid.Rows[rowNumber].Cells["Protocol_Out"].Value = Protocol_TB.Lines[Protocol_TB.Lines .Length- 1]; }
+                                    if (Port_TB.Lines.Length > i) { Outbound_DataGrid.Rows[rowNumber].Cells["Port_Out"].Value = Port_TB.Lines[i]; } else { Outbound_DataGrid.Rows[rowNumber].Cells["Port_Out"].Value = Port_TB.Lines[Port_TB.Lines .Length- 1]; }
+                                    Outbound_DataGrid.Rows[rowNumber].Cells["Source_Out"].Value = sourceInstance.Name;
+                                    Outbound_DataGrid.Rows[rowNumber].Cells["SourceIP_Out"].Value = sourceInstance.IpAddress;
                                     Outbound_DataGrid.Rows[rowNumber].Cells["SourceSG_Out"].Value = sg.GroupId;
                                     Outbound_DataGrid.Rows[rowNumber].Cells["SourceSG_Out"].ToolTipText = sg.GroupName;
                                     if (perm.IpProtocol == "-1")
@@ -583,8 +604,8 @@ namespace RouteChecker
                                         Outbound_DataGrid.Rows[rowNumber].Cells["SourcePortRange_Out"].Value = perm.FromPort + "-" + perm.ToPort;
                                     }
                                     Outbound_DataGrid.Rows[rowNumber].Cells["SourceCidr_Out"].Value = range;
-                                    Outbound_DataGrid.Rows[rowNumber].Cells["Dest_Out"].Value = DestInstances[i].Name;
-                                    Outbound_DataGrid.Rows[rowNumber].Cells["DestIP_Out"].Value = DestInstances[i].IpAddress;   
+                                    Outbound_DataGrid.Rows[rowNumber].Cells["Dest_Out"].Value = destinationInstance.Name;
+                                    Outbound_DataGrid.Rows[rowNumber].Cells["DestIP_Out"].Value = destinationInstance.IpAddress;   
                                 }
                                  
                                 
@@ -592,9 +613,10 @@ namespace RouteChecker
                                 {                                        
                                     DataGridViewRow row = new DataGridViewRow();
                                     int rowNumber = Outbound_DataGrid.Rows.Add(row);
-                                    Outbound_DataGrid.Rows[rowNumber].Cells["Port_Out"].Value = Port_TB.Lines[i];
-                                    Outbound_DataGrid.Rows[rowNumber].Cells["Source_Out"].Value = SourceInstances[i].Name;
-                                    Outbound_DataGrid.Rows[rowNumber].Cells["SourceIP_Out"].Value = SourceInstances[i].IpAddress;
+                                    if (Protocol_TB.Lines.Length > i) { Outbound_DataGrid.Rows[rowNumber].Cells["Protocol_Out"].Value = Protocol_TB.Lines[i]; } else { Outbound_DataGrid.Rows[rowNumber].Cells["Protocol_Out"].Value = Protocol_TB.Lines[Protocol_TB.Lines.Length - 1]; }
+                                    if (Port_TB.Lines.Length > i) { Outbound_DataGrid.Rows[rowNumber].Cells["Port_Out"].Value = Port_TB.Lines[i]; } else { Outbound_DataGrid.Rows[rowNumber].Cells["Port_Out"].Value = Port_TB.Lines[Port_TB.Lines.Length - 1]; }
+                                    Outbound_DataGrid.Rows[rowNumber].Cells["Source_Out"].Value = sourceInstance.Name;
+                                    Outbound_DataGrid.Rows[rowNumber].Cells["SourceIP_Out"].Value = sourceInstance.IpAddress;
                                     Outbound_DataGrid.Rows[rowNumber].Cells["SourceSG_Out"].Value = sg.GroupId;
                                     Outbound_DataGrid.Rows[rowNumber].Cells["SourceSG_Out"].ToolTipText = sg.GroupName;
                                     if (perm.IpProtocol == "-1")
@@ -614,8 +636,8 @@ namespace RouteChecker
                                         Outbound_DataGrid.Rows[rowNumber].Cells["SourcePortRange_Out"].Value = perm.FromPort + "-" + perm.ToPort;
                                     }
                                     Outbound_DataGrid.Rows[rowNumber].Cells["SourceCidr_Out"].Value = pair.GroupId; ;
-                                    Outbound_DataGrid.Rows[rowNumber].Cells["Dest_Out"].Value = DestInstances[i].Name;
-                                    Outbound_DataGrid.Rows[rowNumber].Cells["DestIP_Out"].Value = DestInstances[i].IpAddress;                                      
+                                    Outbound_DataGrid.Rows[rowNumber].Cells["Dest_Out"].Value = destinationInstance.Name;
+                                    Outbound_DataGrid.Rows[rowNumber].Cells["DestIP_Out"].Value = destinationInstance.IpAddress;                                      
                                 }                             
                              }
                         }
@@ -626,30 +648,52 @@ namespace RouteChecker
                 {
                     DataGridViewRow row = new DataGridViewRow();
                     int rowNumber = Outbound_DataGrid.Rows.Add(row);
-                    Outbound_DataGrid.Rows[rowNumber].Cells["Port_Out"].Value = Port_TB.Lines[i];
-                    Outbound_DataGrid.Rows[rowNumber].Cells["Source_Out"].Value = SourceInstances[i].Name;
-                    Outbound_DataGrid.Rows[rowNumber].Cells["SourceIP_Out"].Value = SourceInstances[i].IpAddress;
+                    if (Protocol_TB.Lines.Length > i) { Outbound_DataGrid.Rows[rowNumber].Cells["Protocol_Out"].Value = Protocol_TB.Lines[i]; } else { Outbound_DataGrid.Rows[rowNumber].Cells["Protocol_Out"].Value = Protocol_TB.Lines[Protocol_TB.Lines.Length -1]; }
+                    if (Port_TB.Lines.Length > i) { Outbound_DataGrid.Rows[rowNumber].Cells["Port_Out"].Value = Port_TB.Lines[i]; } else { Outbound_DataGrid.Rows[rowNumber].Cells["Port_Out"].Value = Port_TB.Lines[Port_TB.Lines.Length - 1]; }
+                    Outbound_DataGrid.Rows[rowNumber].Cells["Source_Out"].Value = sourceInstance.Name;
+                    Outbound_DataGrid.Rows[rowNumber].Cells["SourceIP_Out"].Value = sourceInstance.IpAddress;
                     Outbound_DataGrid.Rows[rowNumber].Cells["SourceSG_Out"].Value = "n/a";
                     Outbound_DataGrid.Rows[rowNumber].Cells["SourceProtocol_Out"].Value = "n/a";
                     Outbound_DataGrid.Rows[rowNumber].Cells["SourcePortRange_Out"].Value = "n/a";
                     Outbound_DataGrid.Rows[rowNumber].Cells["SourceCidr_Out"].Value = "n/a"; ;
-                    Outbound_DataGrid.Rows[rowNumber].Cells["Dest_Out"].Value = DestInstances[i].Name;
-                    Outbound_DataGrid.Rows[rowNumber].Cells["DestIP_Out"].Value = DestInstances[i].IpAddress;
+                    Outbound_DataGrid.Rows[rowNumber].Cells["Dest_Out"].Value = destinationInstance.Name;
+                    Outbound_DataGrid.Rows[rowNumber].Cells["DestIP_Out"].Value = destinationInstance.IpAddress;
                     
                 }
                 
-                i++;
+                
 
             }
 
-            i = 0;
-            foreach (string line in Dest_TB.Lines)
+            
+            for (int i = 0; i < looptimes; i++)
             {
+                // Find Source Instance using IP or Name
+                Instance sourceInstance;
+                if (Source_TB.Lines.Length > i)
+                {
+                    sourceInstance = SourceInstances.Find(x => x != null && (x.IpAddress == Source_TB.Lines[i] || x.Name == Source_TB.Lines[i]));
+                }
+                else
+                {
+                    sourceInstance = SourceInstances.Find(x => x != null && (x.IpAddress == Source_TB.Lines[Source_TB.Lines.Length - 1] || x.Name == Source_TB.Lines[Source_TB.Lines.Length - 1]));
+                }
+                // Find Destination Instance using IP                
+                Instance destinationInstance;
+                if (Dest_TB.Lines.Length > i)
+                {
+                    destinationInstance = DestInstances.Find(x => x != null && (x.IpAddress == Dest_TB.Lines[i] || x.Name == Dest_TB.Lines[i]));
+                }
+                else
+                {
+                    destinationInstance = DestInstances.Find(x => x != null && (x.IpAddress == Dest_TB.Lines[Dest_TB.Lines.Length - 1] || x.Name == Dest_TB.Lines[Dest_TB.Lines.Length - 1]));
+                }
+
                 // If this is an instance, not just an IP
-                if (DestInstances[i].IsInstance)
+                if (destinationInstance.IsInstance)
                 {
 
-                    foreach (GroupIdentifier sgi in DestInstances[i].SecurityGroups)
+                    foreach (GroupIdentifier sgi in destinationInstance.SecurityGroups)
                     {
                         SecurityGroup sg = SecGroups.Find(x => x.GroupId == sgi.GroupId);
                         if (sg != null)
@@ -660,11 +704,12 @@ namespace RouteChecker
                                 {
                                     DataGridViewRow row = new DataGridViewRow();
                                     int rowNumber = Inbound_DataGrid.Rows.Add(row);
-                                    Inbound_DataGrid.Rows[rowNumber].Cells["Port_In"].Value = Port_TB.Lines[i];
-                                    Inbound_DataGrid.Rows[rowNumber].Cells["Source_In"].Value = SourceInstances[i].Name;
-                                    Inbound_DataGrid.Rows[rowNumber].Cells["SourceIP_In"].Value = SourceInstances[i].IpAddress;
-                                    Inbound_DataGrid.Rows[rowNumber].Cells["Dest_In"].Value = DestInstances[i].Name;
-                                    Inbound_DataGrid.Rows[rowNumber].Cells["DestIP_In"].Value = DestInstances[i].IpAddress;
+                                    if (Protocol_TB.Lines.Length > i) { Inbound_DataGrid.Rows[rowNumber].Cells["Protocol_In"].Value = Protocol_TB.Lines[i]; } else { Inbound_DataGrid.Rows[rowNumber].Cells["Protocol_In"].Value = Protocol_TB.Lines[Protocol_TB.Lines.Length - 1]; }
+                                    if (Port_TB.Lines.Length > i) { Inbound_DataGrid.Rows[rowNumber].Cells["Port_In"].Value = Port_TB.Lines[i]; } else { Inbound_DataGrid.Rows[rowNumber].Cells["Port_In"].Value = Port_TB.Lines[Port_TB.Lines .Length- 1]; }
+                                    Inbound_DataGrid.Rows[rowNumber].Cells["Source_In"].Value = sourceInstance.Name;
+                                    Inbound_DataGrid.Rows[rowNumber].Cells["SourceIP_In"].Value = sourceInstance.IpAddress;
+                                    Inbound_DataGrid.Rows[rowNumber].Cells["Dest_In"].Value = destinationInstance.Name;
+                                    Inbound_DataGrid.Rows[rowNumber].Cells["DestIP_In"].Value = destinationInstance.IpAddress;
                                     Inbound_DataGrid.Rows[rowNumber].Cells["DestSG_In"].Value = sg.GroupId;
                                     Inbound_DataGrid.Rows[rowNumber].Cells["DestSG_In"].ToolTipText = sg.GroupName;
                                     if (perm.IpProtocol == "-1")
@@ -691,11 +736,12 @@ namespace RouteChecker
                                 {
                                     DataGridViewRow row = new DataGridViewRow();
                                     int rowNumber = Inbound_DataGrid.Rows.Add(row);
-                                    Inbound_DataGrid.Rows[rowNumber].Cells["Port_In"].Value = Port_TB.Lines[i];
-                                    Inbound_DataGrid.Rows[rowNumber].Cells["Source_In"].Value = SourceInstances[i].Name;
-                                    Inbound_DataGrid.Rows[rowNumber].Cells["SourceIP_In"].Value = SourceInstances[i].IpAddress;
-                                    Inbound_DataGrid.Rows[rowNumber].Cells["Dest_In"].Value = DestInstances[i].Name;
-                                    Inbound_DataGrid.Rows[rowNumber].Cells["DestIP_In"].Value = DestInstances[i].IpAddress;
+                                    if (Protocol_TB.Lines.Length > i) { Inbound_DataGrid.Rows[rowNumber].Cells["Protocol_In"].Value = Protocol_TB.Lines[i]; } else { Inbound_DataGrid.Rows[rowNumber].Cells["Protocol_In"].Value = Protocol_TB.Lines[Protocol_TB.Lines.Length - 1]; }
+                                    if (Port_TB.Lines.Length > i) { Inbound_DataGrid.Rows[rowNumber].Cells["Port_In"].Value = Port_TB.Lines[i]; } else { Inbound_DataGrid.Rows[rowNumber].Cells["Port_In"].Value = Port_TB.Lines[Port_TB.Lines.Length - 1]; }
+                                    Inbound_DataGrid.Rows[rowNumber].Cells["Source_In"].Value = sourceInstance.Name;
+                                    Inbound_DataGrid.Rows[rowNumber].Cells["SourceIP_In"].Value = sourceInstance.IpAddress;
+                                    Inbound_DataGrid.Rows[rowNumber].Cells["Dest_In"].Value = destinationInstance.Name;
+                                    Inbound_DataGrid.Rows[rowNumber].Cells["DestIP_In"].Value = destinationInstance.IpAddress;
                                     Inbound_DataGrid.Rows[rowNumber].Cells["DestSG_In"].Value = sg.GroupId;
                                     Inbound_DataGrid.Rows[rowNumber].Cells["DestSG_In"].ToolTipText = sg.GroupName;
                                     if (perm.IpProtocol == "-1")
@@ -726,19 +772,63 @@ namespace RouteChecker
                 {
                     DataGridViewRow row = new DataGridViewRow();
                     int rowNumber = Inbound_DataGrid.Rows.Add(row);
-
-                    Inbound_DataGrid.Rows[rowNumber].Cells["Port_In"].Value = Port_TB.Lines[i];
-                    Inbound_DataGrid.Rows[rowNumber].Cells["Source_In"].Value = SourceInstances[i].Name;
-                    Inbound_DataGrid.Rows[rowNumber].Cells["SourceIP_In"].Value = SourceInstances[i].IpAddress;
-                    Inbound_DataGrid.Rows[rowNumber].Cells["Dest_In"].Value = DestInstances[i].Name;
-                    Inbound_DataGrid.Rows[rowNumber].Cells["DestIP_In"].Value = DestInstances[i].IpAddress;
+                    if (Protocol_TB.Lines.Length > i) { Inbound_DataGrid.Rows[rowNumber].Cells["Protocol_In"].Value = Protocol_TB.Lines[i]; } else { Inbound_DataGrid.Rows[rowNumber].Cells["Protocol_In"].Value = Protocol_TB.Lines[Protocol_TB.Lines.Length - 1]; }
+                    if (Port_TB.Lines.Length > i) { Inbound_DataGrid.Rows[rowNumber].Cells["Port_In"].Value = Port_TB.Lines[i]; } else { Inbound_DataGrid.Rows[rowNumber].Cells["Port_In"].Value = Port_TB.Lines[Port_TB.Lines.Length - 1]; }
+                    Inbound_DataGrid.Rows[rowNumber].Cells["Source_In"].Value = sourceInstance.Name;
+                    Inbound_DataGrid.Rows[rowNumber].Cells["SourceIP_In"].Value = sourceInstance.IpAddress;
+                    Inbound_DataGrid.Rows[rowNumber].Cells["Dest_In"].Value = destinationInstance.Name;
+                    Inbound_DataGrid.Rows[rowNumber].Cells["DestIP_In"].Value = destinationInstance.IpAddress;
                     Inbound_DataGrid.Rows[rowNumber].Cells["DestSG_In"].Value = "n/a";
                     Inbound_DataGrid.Rows[rowNumber].Cells["DestProtocol_In"].Value = "n/a";
                     Inbound_DataGrid.Rows[rowNumber].Cells["DestPortRange_In"].Value = "n/a";
                     Inbound_DataGrid.Rows[rowNumber].Cells["DestCidr_In"].Value = "n/a";
 
                 }
+                                
             }
+
+
+            //var y = System.Drawing.Color.Gainsboro;
+            //var z = System.Drawing.Color.DarkGray;
+            //bool yInuse = true;
+
+            //string a = null;
+            //string b = null;
+            //for (int i = 0; i < Outbound_DataGrid.Rows.Count -1; i++)
+            //{
+                
+            //    a = Outbound_DataGrid.Rows[i].Cells["SourceSG_Out"].Value.ToString();
+                
+            //    if (b != null)
+            //    {
+            //        if (a != b && yInuse)
+            //        {
+            //            Outbound_DataGrid.Rows[i].Cells["SourceSG_Out"].Style.BackColor = z;
+            //            yInuse = false;
+            //        }
+            //        else if (a != b && yInuse == false)
+            //        {
+            //            Outbound_DataGrid.Rows[i].Cells["SourceSG_Out"].Style.BackColor = y;
+            //            yInuse = true;
+            //        }
+            //        else if (a == b && yInuse)
+            //        {
+            //            Outbound_DataGrid.Rows[i].Cells["SourceSG_Out"].Style.BackColor = y;
+            //            yInuse = true;
+            //        }
+            //        else if (a == b && yInuse == false)
+            //        {
+            //            Outbound_DataGrid.Rows[i].Cells["SourceSG_Out"].Style.BackColor = z;
+            //            yInuse = false;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        Outbound_DataGrid.Rows[i].Cells["SourceSG_Out"].Style.BackColor = y;
+            //    }
+            //    b = Outbound_DataGrid.Rows[i].Cells["SourceSG_Out"].Value.ToString();
+
+            //}
 
         }
 
@@ -747,27 +837,238 @@ namespace RouteChecker
         {
             for (int i = 0; i < Outbound_DataGrid.Rows.Count; i++)
             {
-                if (Outbound_DataGrid.Rows[i].Cells[0] != null)
+                bool ipMatch = false;
+                bool portMatch = false;
+                bool protocolMatch = false;
+                string comment = "";
+
+                // Reset Colours
+                Outbound_DataGrid.Rows[i].Cells["SourcePortRange_Out"].Style.BackColor = System.Drawing.Color.White;
+                Outbound_DataGrid.Rows[i].Cells["SourceProtocol_Out"].Style.BackColor = System.Drawing.Color.White;
+                Outbound_DataGrid.Rows[i].Cells["SourceCidr_Out"].Style.BackColor = System.Drawing.Color.White;
+
+                
+                if (Outbound_DataGrid.Rows[i].Cells[0].Value != null)
                 {
+                    string Protocol = Outbound_DataGrid.Rows[i].Cells["Protocol_Out"].Value.ToString();
+                    string SGProtocol = Outbound_DataGrid.Rows[i].Cells["SourceProtocol_Out"].Value.ToString();
                     string DestIP = Outbound_DataGrid.Rows[i].Cells["DestIP_Out"].Value.ToString();
                     string SGCidr = Outbound_DataGrid.Rows[i].Cells["SourceCidr_Out"].Value.ToString();
                     string DestInstance = Outbound_DataGrid.Rows[i].Cells["Dest_Out"].Value.ToString();
+                    string Port = Outbound_DataGrid.Rows[i].Cells["Port_Out"].Value.ToString();
+                    string SGPortRange = Outbound_DataGrid.Rows[i].Cells["SourcePortRange_Out"].Value.ToString();
 
+
+                    // Check if Eternal IP (not an instance)
+                    if (Outbound_DataGrid.Rows[i].Cells["Source_Out"].Value.ToString() == "External IP")
+                    {
+                        Outbound_DataGrid.Rows[i].Cells["Comments_Out"].Value = "External IP. No Security Group to analyze";
+                        // Skip the rest of this loop
+                        continue;
+                    }
+                    
+                    // Look for IP/Group/Source Match
                     if (SGCidr.StartsWith("sg-"))
                     {
                         var a = DestInstances.Find(x => x != null && x.Name == DestInstance);
-                        var b = a.SecurityGroups.Find(x => x != null && x.GroupId == SGCidr);
+                        if (a != null)
+                        {
+                            var b = a.SecurityGroups.Find(x => x != null && x.GroupId == SGCidr);
+                            if (b != null)
+                            {
+                                ipMatch = true;
+                            }
+                        }
                     }
-                    else if (IsInCidrRange(Outbound_DataGrid.Rows[i].Cells["DestIP_Out"].Value.ToString(), Outbound_DataGrid.Rows[i].Cells["SourceCidr_Out"].Value.ToString()))
+                    else if (IsInCidrRange(DestIP, SGCidr))
                     {
+                        ipMatch = true;
+                    }
+                    else if (SGCidr == "0.0.0.0/0")
+                    {
+                        ipMatch = true;
+                    }
 
+                    // Look for Port Match
+                    if (SGPortRange == "All" || Port == "-1")
+                    {
+                        portMatch = true;
+                    }
+                    else
+                    {
+                        string[] a = SGPortRange.Split('-');
+                        if (a.Length == 2)
+                        {
+                            if (Convert.ToInt32(a[0]) <= Convert.ToInt32(Port) && Convert.ToInt32(a[1]) >= Convert.ToInt32(Port))
+                            {
+                                portMatch = true;
+                            }
+                        }
+                    }
+                    
+                    // Look for Protocol Match
+                    if (SGProtocol == "All" || SGProtocol == Protocol)
+                    {
+                        protocolMatch = true;
+                    }
+
+
+                    // Colour Cells
+                    if (protocolMatch)
+                    {
+                        Outbound_DataGrid.Rows[i].Cells["SourceProtocol_Out"].Style.BackColor = System.Drawing.Color.Yellow;
+                        comment += "Protocol matches, ";
+                    }
+                    if (portMatch)
+                    {
+                        Outbound_DataGrid.Rows[i].Cells["SourcePortRange_Out"].Style.BackColor = System.Drawing.Color.Yellow;
+                        comment += "Port matches, ";
+                    }
+                    if (ipMatch)
+                    {
+                        Outbound_DataGrid.Rows[i].Cells["SourceCidr_Out"].Style.BackColor = System.Drawing.Color.Yellow;
+                        comment += "Source matches, ";
+                    }
+                    if (protocolMatch && portMatch && ipMatch)
+                    {
+                        Outbound_DataGrid.Rows[i].Cells["SourcePortRange_Out"].Style.BackColor = System.Drawing.Color.LightGreen;
+                        Outbound_DataGrid.Rows[i].Cells["SourceProtocol_Out"].Style.BackColor = System.Drawing.Color.LightGreen;
+                        Outbound_DataGrid.Rows[i].Cells["SourceCidr_Out"].Style.BackColor = System.Drawing.Color.LightGreen;
+                    }
+
+                    if (comment.Length > 0)
+                    {
+                        Outbound_DataGrid.Rows[i].Cells["Comments_Out"].Value = comment.Remove(comment.Length - 2);
                     }
                 }
             }
 
+
+            Outbound_DataGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
 
 
+        void AnalyzeInbound()
+        {
+            for (int i = 0; i < Inbound_DataGrid.Rows.Count; i++)
+            {
+                bool ipMatch = false;
+                bool portMatch = false;
+                bool protocolMatch = false;
+                string comment = "";
+
+
+                // Reset Colours
+                Inbound_DataGrid.Rows[i].Cells["DestPortRange_In"].Style.BackColor = System.Drawing.Color.White;
+                Inbound_DataGrid.Rows[i].Cells["DestProtocol_In"].Style.BackColor = System.Drawing.Color.White;
+                Inbound_DataGrid.Rows[i].Cells["DestCidr_In"].Style.BackColor = System.Drawing.Color.White;
+
+
+                if (Inbound_DataGrid.Rows[i].Cells[0].Value != null)
+                {
+                    string Protocol = Inbound_DataGrid.Rows[i].Cells["Protocol_In"].Value.ToString();
+                    string SGProtocol = Inbound_DataGrid.Rows[i].Cells["DestProtocol_In"].Value.ToString();
+                    string SourceIP = Inbound_DataGrid.Rows[i].Cells["SourceIP_In"].Value.ToString();
+                    string SGCidr = Inbound_DataGrid.Rows[i].Cells["DestCidr_In"].Value.ToString();
+                    string SourceInstance = Inbound_DataGrid.Rows[i].Cells["Source_In"].Value.ToString();
+                    string Port = Inbound_DataGrid.Rows[i].Cells["Port_In"].Value.ToString();
+                    string PortRange = Inbound_DataGrid.Rows[i].Cells["DestPortRange_In"].Value.ToString();
+
+
+                    // Check if Eternal IP (not an instance)
+                    if (Inbound_DataGrid.Rows[i].Cells["Dest_In"].Value.ToString() == "External IP")
+                    {
+                        Inbound_DataGrid.Rows[i].Cells["Comments_In"].Value = "External IP. No Security Group to analyze";
+                        // Skip the rest of this loop
+                        continue;
+                    }
+
+                                       
+
+                    // Look for IP/Group/Source Match
+                    if (SGCidr.StartsWith("sg-"))
+                    {
+                        var a = SourceInstances.Find(x => x != null && x.Name == SourceInstance);
+                        if (a != null)
+                        {
+                            var b = a.SecurityGroups.Find(x => x != null && x.GroupId == SGCidr);
+                            if (b != null)
+                            {
+                                ipMatch = true;
+                            }
+                        }
+                    }
+                    else if (IsInCidrRange(SourceIP, SGCidr))
+                    {
+                        ipMatch = true;
+                    }
+                    else if (SGCidr == "0.0.0.0/0")
+                    {
+                        ipMatch = true;
+                    }
+
+                    // Look for Port Match
+                    if (PortRange == "All" || Port == "-1")
+                    {
+                        portMatch = true;
+                    }
+                    else
+                    {
+                        string[] a = PortRange.Split('-');
+                        if (a.Length == 2)
+                        {
+                            if (Convert.ToInt32(a[0]) <= Convert.ToInt32(Port) && Convert.ToInt32(a[1]) >= Convert.ToInt32(Port))
+                            {
+                                portMatch = true;
+                            }
+                        }
+                    }
+                    
+                    // Look for Protocol Match
+                    if (SGProtocol == "All" || SGProtocol == Protocol)
+                    {
+                        protocolMatch = true;
+                    }
+
+
+                    // Colour Cells
+                    if (protocolMatch)
+                    {
+                        Inbound_DataGrid.Rows[i].Cells["DestProtocol_In"].Style.BackColor = System.Drawing.Color.Yellow;
+                        comment += "Protocol matches, ";
+                    }
+                    if (portMatch)
+                    {
+                        Inbound_DataGrid.Rows[i].Cells["DestPortRange_In"].Style.BackColor = System.Drawing.Color.Yellow;
+                        comment += "Port matches, ";
+                    }
+                    if (ipMatch)
+                    {
+                        Inbound_DataGrid.Rows[i].Cells["DestCidr_In"].Style.BackColor = System.Drawing.Color.Yellow;
+                        comment += "Source matches, ";
+                    }
+                    if (protocolMatch && portMatch && ipMatch)
+                    {
+                        Inbound_DataGrid.Rows[i].Cells["DestPortRange_In"].Style.BackColor = System.Drawing.Color.LightGreen;
+                        Inbound_DataGrid.Rows[i].Cells["DestProtocol_In"].Style.BackColor = System.Drawing.Color.LightGreen;
+                        Inbound_DataGrid.Rows[i].Cells["DestCidr_In"].Style.BackColor = System.Drawing.Color.LightGreen;
+                    }
+
+                    if (comment.Length > 0)
+                    {
+                        Inbound_DataGrid.Rows[i].Cells["Comments_In"].Value = comment.Remove(comment.Length - 2);
+                    }
+                
+                }
+                
+            }
+
+            Inbound_DataGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+
+        }
+
+
+        
         private static bool IsInCidrRange(string ipAddress, string CidrBlock)
         {
             string[] parts = CidrBlock.Split('/');
@@ -800,12 +1101,18 @@ namespace RouteChecker
             
             foreach (string item in Source_TB.Lines)
             {
-                PopulateInstanceLists(item.Trim(), ref SourceInstances);
+                if (SourceInstances.Find(x => x != null && (x.IpAddress == item || x.Name == item)) == null)
+                {
+                    PopulateInstanceLists(item.Trim(), ref SourceInstances);
+                }
             }
 
             foreach (string item in Dest_TB.Lines)
             {
-                PopulateInstanceLists(item.Trim(), ref DestInstances);
+                if (DestInstances.Find(x => x != null && (x.IpAddress == item || x.Name == item)) == null)
+                {
+                    PopulateInstanceLists(item.Trim(), ref DestInstances);
+                }
             }
                     
             
@@ -838,13 +1145,14 @@ namespace RouteChecker
             }
             else
             {
-                DisplayResults();
+                BuildGridDisplay();
             }
 
             ProgressBar1.Style = ProgressBarStyle.Continuous;
             ProgressBar1.Value = 0;
             Submit_BTN.Enabled = true;            
-            Status_LB.Text = "Finished";
+            Status_LB.Text = "Finished. Security Groups and instance details cached.";
+            Cache_BTN.Enabled = true;
         }
 
         private void App_Load(object sender, EventArgs e)
@@ -852,9 +1160,43 @@ namespace RouteChecker
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        
+
+        private void Analyze_BTN_Click(object sender, EventArgs e)
         {
             AnalyzeOutbound();
+            AnalyzeInbound();
+        }
+
+        private void Port_TB_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Cache_BTN_Click(object sender, EventArgs e)
+        {            
+            SourceInstances.Clear();
+            DestInstances.Clear();
+            SecGroups.Clear();
+            Cache_BTN.Enabled = false;
+
+            Status_LB.Text = "Cache cleared";
+        }
+
+
+
+        private void versionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                rab_Base.TextBox tb = new rab_Base.TextBox(600, 800, "Version Info", Properties.Resources.version);
+                tb.StartPosition = FormStartPosition.CenterParent;
+                tb.Show();
+            }
+            catch (Exception)
+            {
+
+            } 
         }
 
 
@@ -874,12 +1216,14 @@ namespace RouteChecker
 
     // Custom classes to hold the instance object along with it's security group rules
     // If the ip address is not an aws instance then it will still have an object
+    // Only allows one subnet so only uses network interface[0].
     public class Instance
     {
         public bool IsInstance { get; set; }
         public string Name { get; set; }
         public string IpAddress { get; set; }
         public string InstanceId { get; set; }
+        public string Subnet { get; set; }
 
         public List<GroupIdentifier> SecurityGroups { get; set; }
 

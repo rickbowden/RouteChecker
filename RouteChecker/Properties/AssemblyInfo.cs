@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("RouteChecker")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Checks AWS EC2 network security to ascertain if a source is allowed communicate with a target.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("FPS")]
 [assembly: AssemblyProduct("RouteChecker")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
