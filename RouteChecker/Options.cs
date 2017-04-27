@@ -29,7 +29,7 @@ namespace RouteChecker
             }
             
 
-            EC2Items_TB.Clear();
+            
             
 
         }

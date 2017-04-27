@@ -37,16 +37,8 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.Mfa_TB = new System.Windows.Forms.TextBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.EC2Items_TB = new System.Windows.Forms.TextBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.Tags_TB = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -86,7 +78,7 @@
             // 
             // Cancel_BTN
             // 
-            this.Cancel_BTN.Location = new System.Drawing.Point(14, 805);
+            this.Cancel_BTN.Location = new System.Drawing.Point(14, 488);
             this.Cancel_BTN.Name = "Cancel_BTN";
             this.Cancel_BTN.Size = new System.Drawing.Size(75, 25);
             this.Cancel_BTN.TabIndex = 6;
@@ -96,7 +88,7 @@
             // 
             // Save_BTN
             // 
-            this.Save_BTN.Location = new System.Drawing.Point(95, 805);
+            this.Save_BTN.Location = new System.Drawing.Point(106, 488);
             this.Save_BTN.Name = "Save_BTN";
             this.Save_BTN.Size = new System.Drawing.Size(75, 25);
             this.Save_BTN.TabIndex = 5;
@@ -138,95 +130,21 @@
             this.Mfa_TB.TabIndex = 0;
             this.Mfa_TB.WordWrap = false;
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.EC2Items_TB);
-            this.groupBox3.Location = new System.Drawing.Point(14, 703);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(907, 75);
-            this.groupBox3.TabIndex = 9;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "EC2 Items";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 23);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(426, 17);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Comma seperated list of EC2 instance default properties to display";
-            // 
-            // EC2Items_TB
-            // 
-            this.EC2Items_TB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.EC2Items_TB.Location = new System.Drawing.Point(12, 43);
-            this.EC2Items_TB.Multiline = true;
-            this.EC2Items_TB.Name = "EC2Items_TB";
-            this.EC2Items_TB.Size = new System.Drawing.Size(880, 24);
-            this.EC2Items_TB.TabIndex = 1;
-            this.EC2Items_TB.WordWrap = false;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox4.Controls.Add(this.label4);
-            this.groupBox4.Controls.Add(this.Tags_TB);
-            this.groupBox4.Location = new System.Drawing.Point(14, 480);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(907, 206);
-            this.groupBox4.TabIndex = 10;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Tags";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 21);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(548, 34);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "List of tags that can be displayed. This list will appear in the list of choosabl" +
-    "e columns.\r\nUse the format Tag=tagName";
-            // 
-            // Tags_TB
-            // 
-            this.Tags_TB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Tags_TB.Location = new System.Drawing.Point(12, 58);
-            this.Tags_TB.Multiline = true;
-            this.Tags_TB.Name = "Tags_TB";
-            this.Tags_TB.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.Tags_TB.Size = new System.Drawing.Size(880, 133);
-            this.Tags_TB.TabIndex = 0;
-            this.Tags_TB.WordWrap = false;
-            // 
             // Options
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(932, 845);
+            this.ClientSize = new System.Drawing.Size(932, 531);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.Cancel_BTN);
             this.Controls.Add(this.Save_BTN);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox4);
             this.Name = "Options";
             this.Text = "Options";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -241,11 +159,5 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox Mfa_TB;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox EC2Items_TB;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox Tags_TB;
     }
 }

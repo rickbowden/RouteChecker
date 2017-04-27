@@ -1,3 +1,10 @@
-﻿
+﻿27/04/2017
+v0.2
+
+* Removed non relevant options for this app.
+
+
+
+
 v0.1
-Pre-release
+First Build

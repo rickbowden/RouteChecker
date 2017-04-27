@@ -37,7 +37,7 @@
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="Version" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">0.1</Value>
+      <Value Profile="(Default)">0.2</Value>
     </Setting>
     <Setting Name="VersionsToIgnore" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
