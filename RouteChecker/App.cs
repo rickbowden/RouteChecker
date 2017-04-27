@@ -539,7 +539,7 @@ namespace RouteChecker
         void BuildGridDisplay()
         {
             
-            int looptimes = Math.Max(Source_TB.Lines.Length, Dest_TB.Lines.Length); 
+            int looptimes = Math.Max(Math.Max(Source_TB.Lines.Length, Dest_TB.Lines.Length), Port_TB.Lines.Length); 
            
             for (int i = 0; i < looptimes; i++)
             {                

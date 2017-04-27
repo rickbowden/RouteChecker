@@ -29,26 +29,26 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -228,7 +228,7 @@
             // 
             // Submit_BTN
             // 
-            this.Submit_BTN.Location = new System.Drawing.Point(12, 330);
+            this.Submit_BTN.Location = new System.Drawing.Point(12, 297);
             this.Submit_BTN.Name = "Submit_BTN";
             this.Submit_BTN.Size = new System.Drawing.Size(75, 25);
             this.Submit_BTN.TabIndex = 16;
@@ -310,7 +310,7 @@
             this.Source_TB.Multiline = true;
             this.Source_TB.Name = "Source_TB";
             this.Source_TB.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.Source_TB.Size = new System.Drawing.Size(184, 152);
+            this.Source_TB.Size = new System.Drawing.Size(184, 112);
             this.Source_TB.TabIndex = 19;
             this.Source_TB.Text = "172.23.36.46";
             this.toolTip1.SetToolTip(this.Source_TB, "IP address or instance name");
@@ -325,7 +325,7 @@
             this.Dest_TB.Multiline = true;
             this.Dest_TB.Name = "Dest_TB";
             this.Dest_TB.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.Dest_TB.Size = new System.Drawing.Size(178, 152);
+            this.Dest_TB.Size = new System.Drawing.Size(178, 112);
             this.Dest_TB.TabIndex = 20;
             this.Dest_TB.Text = "172.23.36.82";
             this.toolTip1.SetToolTip(this.Dest_TB, "IP address or instance name");
@@ -340,7 +340,7 @@
             this.Port_TB.Multiline = true;
             this.Port_TB.Name = "Port_TB";
             this.Port_TB.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.Port_TB.Size = new System.Drawing.Size(182, 152);
+            this.Port_TB.Size = new System.Drawing.Size(182, 112);
             this.Port_TB.TabIndex = 21;
             this.Port_TB.Text = "16163";
             this.Port_TB.WordWrap = false;
@@ -351,7 +351,7 @@
             this.groupBox3.Controls.Add(this.Source_TB);
             this.groupBox3.Location = new System.Drawing.Point(13, 125);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(213, 194);
+            this.groupBox3.Size = new System.Drawing.Size(213, 154);
             this.groupBox3.TabIndex = 22;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Source";
@@ -361,7 +361,7 @@
             this.groupBox4.Controls.Add(this.Port_TB);
             this.groupBox4.Location = new System.Drawing.Point(517, 125);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(213, 194);
+            this.groupBox4.Size = new System.Drawing.Size(213, 154);
             this.groupBox4.TabIndex = 23;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Port";
@@ -371,7 +371,7 @@
             this.groupBox5.Controls.Add(this.Dest_TB);
             this.groupBox5.Location = new System.Drawing.Point(261, 125);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(213, 194);
+            this.groupBox5.Size = new System.Drawing.Size(213, 154);
             this.groupBox5.TabIndex = 24;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Destination";
@@ -383,10 +383,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.OutboundTAB);
             this.tabControl1.Controls.Add(this.InboundTAB);
-            this.tabControl1.Location = new System.Drawing.Point(13, 371);
+            this.tabControl1.Location = new System.Drawing.Point(13, 338);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1261, 339);
+            this.tabControl1.Size = new System.Drawing.Size(1261, 375);
             this.tabControl1.TabIndex = 25;
             // 
             // OutboundTAB
@@ -395,7 +395,7 @@
             this.OutboundTAB.Location = new System.Drawing.Point(4, 25);
             this.OutboundTAB.Name = "OutboundTAB";
             this.OutboundTAB.Padding = new System.Windows.Forms.Padding(3);
-            this.OutboundTAB.Size = new System.Drawing.Size(1253, 310);
+            this.OutboundTAB.Size = new System.Drawing.Size(1253, 346);
             this.OutboundTAB.TabIndex = 1;
             this.OutboundTAB.Text = "Source Outbound Rules";
             this.toolTip1.SetToolTip(this.OutboundTAB, "Outbound rules for the source instances.");
@@ -426,7 +426,7 @@
             this.Outbound_DataGrid.Location = new System.Drawing.Point(3, 5);
             this.Outbound_DataGrid.Name = "Outbound_DataGrid";
             this.Outbound_DataGrid.RowTemplate.Height = 24;
-            this.Outbound_DataGrid.Size = new System.Drawing.Size(1247, 301);
+            this.Outbound_DataGrid.Size = new System.Drawing.Size(1247, 337);
             this.Outbound_DataGrid.TabIndex = 18;
             // 
             // InboundTAB
@@ -443,7 +443,7 @@
             // 
             // Analyze_BTN
             // 
-            this.Analyze_BTN.Location = new System.Drawing.Point(109, 330);
+            this.Analyze_BTN.Location = new System.Drawing.Point(109, 297);
             this.Analyze_BTN.Name = "Analyze_BTN";
             this.Analyze_BTN.Size = new System.Drawing.Size(75, 25);
             this.Analyze_BTN.TabIndex = 26;
@@ -457,7 +457,7 @@
             this.groupBox6.Controls.Add(this.Protocol_TB);
             this.groupBox6.Location = new System.Drawing.Point(768, 125);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(213, 194);
+            this.groupBox6.Size = new System.Drawing.Size(213, 154);
             this.groupBox6.TabIndex = 24;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Protocol";
@@ -471,7 +471,7 @@
             this.Protocol_TB.Multiline = true;
             this.Protocol_TB.Name = "Protocol_TB";
             this.Protocol_TB.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.Protocol_TB.Size = new System.Drawing.Size(182, 152);
+            this.Protocol_TB.Size = new System.Drawing.Size(182, 112);
             this.Protocol_TB.TabIndex = 21;
             this.Protocol_TB.Text = "tcp";
             this.Protocol_TB.WordWrap = false;
@@ -479,7 +479,7 @@
             // Cache_BTN
             // 
             this.Cache_BTN.Enabled = false;
-            this.Cache_BTN.Location = new System.Drawing.Point(209, 330);
+            this.Cache_BTN.Location = new System.Drawing.Point(209, 297);
             this.Cache_BTN.Name = "Cache_BTN";
             this.Cache_BTN.Size = new System.Drawing.Size(97, 25);
             this.Cache_BTN.TabIndex = 27;
@@ -505,71 +505,71 @@
             // 
             // Source_Out
             // 
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Source_Out.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Source_Out.DefaultCellStyle = dataGridViewCellStyle21;
             this.Source_Out.HeaderText = "Source";
             this.Source_Out.Name = "Source_Out";
             // 
             // SourceIP_Out
             // 
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.SourceIP_Out.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.SourceIP_Out.DefaultCellStyle = dataGridViewCellStyle22;
             this.SourceIP_Out.HeaderText = "Source IP";
             this.SourceIP_Out.Name = "SourceIP_Out";
             // 
             // SourceSG_Out
             // 
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.SourceSG_Out.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.SourceSG_Out.DefaultCellStyle = dataGridViewCellStyle23;
             this.SourceSG_Out.HeaderText = "SG";
             this.SourceSG_Out.Name = "SourceSG_Out";
             // 
             // SourceProtocol_Out
             // 
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.SourceProtocol_Out.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.SourceProtocol_Out.DefaultCellStyle = dataGridViewCellStyle24;
             this.SourceProtocol_Out.HeaderText = "SG Protcol";
             this.SourceProtocol_Out.Name = "SourceProtocol_Out";
             // 
             // SourcePortRange_Out
             // 
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.SourcePortRange_Out.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.SourcePortRange_Out.DefaultCellStyle = dataGridViewCellStyle25;
             this.SourcePortRange_Out.HeaderText = "SG Port Range";
             this.SourcePortRange_Out.Name = "SourcePortRange_Out";
             // 
             // SourceCidr_Out
             // 
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.SourceCidr_Out.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.SourceCidr_Out.DefaultCellStyle = dataGridViewCellStyle26;
             this.SourceCidr_Out.HeaderText = "SG Source";
             this.SourceCidr_Out.Name = "SourceCidr_Out";
             // 
             // Protocol_Out
             // 
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.White;
-            this.Protocol_Out.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle27.BackColor = System.Drawing.Color.White;
+            this.Protocol_Out.DefaultCellStyle = dataGridViewCellStyle27;
             this.Protocol_Out.HeaderText = "Protocol";
             this.Protocol_Out.Name = "Protocol_Out";
             // 
             // Port_Out
             // 
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.White;
-            this.Port_Out.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle28.BackColor = System.Drawing.Color.White;
+            this.Port_Out.DefaultCellStyle = dataGridViewCellStyle28;
             this.Port_Out.HeaderText = "Port";
             this.Port_Out.Name = "Port_Out";
             // 
             // Dest_Out
             // 
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.Dest_Out.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.Dest_Out.DefaultCellStyle = dataGridViewCellStyle29;
             this.Dest_Out.HeaderText = "Destination";
             this.Dest_Out.Name = "Dest_Out";
             // 
             // DestIP_Out
             // 
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.DestIP_Out.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.DestIP_Out.DefaultCellStyle = dataGridViewCellStyle30;
             this.DestIP_Out.HeaderText = "Destination IP";
             this.DestIP_Out.Name = "DestIP_Out";
             // 
@@ -580,71 +580,71 @@
             // 
             // Source_In
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Source_In.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Source_In.DefaultCellStyle = dataGridViewCellStyle31;
             this.Source_In.HeaderText = "Source";
             this.Source_In.Name = "Source_In";
             // 
             // SourceIP_In
             // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.SourceIP_In.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.SourceIP_In.DefaultCellStyle = dataGridViewCellStyle32;
             this.SourceIP_In.HeaderText = "Source IP";
             this.SourceIP_In.Name = "SourceIP_In";
             // 
             // Protocol_In
             // 
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Protocol_In.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Protocol_In.DefaultCellStyle = dataGridViewCellStyle33;
             this.Protocol_In.HeaderText = "Protocol";
             this.Protocol_In.Name = "Protocol_In";
             // 
             // Port_In
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Port_In.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Port_In.DefaultCellStyle = dataGridViewCellStyle34;
             this.Port_In.HeaderText = "Port";
             this.Port_In.Name = "Port_In";
             // 
             // Dest_In
             // 
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.Dest_In.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.Dest_In.DefaultCellStyle = dataGridViewCellStyle35;
             this.Dest_In.HeaderText = "Destination";
             this.Dest_In.Name = "Dest_In";
             // 
             // DestIP_In
             // 
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.DestIP_In.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.DestIP_In.DefaultCellStyle = dataGridViewCellStyle36;
             this.DestIP_In.HeaderText = "Destination IP";
             this.DestIP_In.Name = "DestIP_In";
             // 
             // DestSG_In
             // 
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.DestSG_In.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.DestSG_In.DefaultCellStyle = dataGridViewCellStyle37;
             this.DestSG_In.HeaderText = "SG";
             this.DestSG_In.Name = "DestSG_In";
             // 
             // DestProtocol_In
             // 
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.DestProtocol_In.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.DestProtocol_In.DefaultCellStyle = dataGridViewCellStyle38;
             this.DestProtocol_In.HeaderText = "SG Protocol";
             this.DestProtocol_In.Name = "DestProtocol_In";
             // 
             // DestPortRange_In
             // 
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.DestPortRange_In.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle39.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.DestPortRange_In.DefaultCellStyle = dataGridViewCellStyle39;
             this.DestPortRange_In.HeaderText = "SG Port Range";
             this.DestPortRange_In.Name = "DestPortRange_In";
             // 
             // DestCIDR_In
             // 
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.DestCIDR_In.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.DestCIDR_In.DefaultCellStyle = dataGridViewCellStyle40;
             this.DestCIDR_In.HeaderText = "SG Source";
             this.DestCIDR_In.Name = "DestCIDR_In";
             // 
@@ -658,7 +658,7 @@
             this.groupBox7.Controls.Add(this.tableLayoutPanel1);
             this.groupBox7.Location = new System.Drawing.Point(1008, 135);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(266, 184);
+            this.groupBox7.Size = new System.Drawing.Size(266, 144);
             this.groupBox7.TabIndex = 28;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Key";
@@ -698,14 +698,14 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(233, 151);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(233, 111);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.label5.Location = new System.Drawing.Point(9, 76);
+            this.label5.Location = new System.Drawing.Point(9, 56);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(48, 17);
             this.label5.TabIndex = 2;
@@ -714,7 +714,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(92, 76);
+            this.label6.Location = new System.Drawing.Point(92, 56);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(108, 34);
             this.label6.TabIndex = 3;
