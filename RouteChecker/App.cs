@@ -35,6 +35,8 @@ namespace RouteChecker
         List<Instance> SourceInstances = new List<Instance>();
         List<Instance> DestInstances = new List<Instance>();
         List<SecurityGroup> SecGroups;
+        List<Subnet> Subnets = new List<Subnet>();
+        List<NetworkAcl> Nacls = new List<NetworkAcl>();
                 
         
         public App()
@@ -360,6 +362,7 @@ namespace RouteChecker
                     i.InstanceId = response.Reservations[0].Instances[0].InstanceId;
                     i.SecurityGroups = response.Reservations[0].Instances[0].SecurityGroups;
                     i.Name = (Utils.GetEC2PropFromString("name", response.Reservations[0].Instances[0]));
+                    i.Subnet = response.Reservations[0].Instances[0].SubnetId;
                 }
                 instanceList.Add(i); 
             }
@@ -378,164 +381,34 @@ namespace RouteChecker
             return result;
         }
 
+        DescribeSubnetsResponse GetSubnets()
+        {
+            DescribeSubnetsResponse result = null;
 
+            using (AmazonEC2Client EC2client = new AmazonEC2Client(creds))
+            {
+                DescribeSubnetsRequest rq = new DescribeSubnetsRequest();
+                result = EC2client.DescribeSubnets();
+            }
 
+            return result;
+        }
 
-        //void Analyse()
-        //{
-        //    int i = 0;
-        //    foreach (string port in Port_TB.Lines)
-        //    {
-        //        int p = Convert.ToInt32(port);
-        //        bool found = false;
-                
-                
+        DescribeNetworkAclsResponse GetNacls()
+        {
+            DescribeNetworkAclsResponse result = null;
 
-        //        // If this is an instance, not just an IP
-        //        if (SourceInstances[i].IsInstance)
-        //        {
+            using (AmazonEC2Client EC2client = new AmazonEC2Client(creds))
+            {
+                DescribeNetworkAclsRequest rq = new DescribeNetworkAclsRequest();
+                result = EC2client.DescribeNetworkAcls();
+            }
 
-        //            // using port, check if security groups allow outbound.
-        //            foreach (GroupIdentifier sgi in SourceInstances[i].SecurityGroups)
-        //            {
-        //                //if (found) { continue; }
-        //                SecurityGroup sg = SecGroups.Find(x => x.GroupId == sgi.GroupId);
-        //                if (sg != null)
-        //                {
-        //                    foreach (IpPermission perm in sg.IpPermissionsEgress)
-        //                    {
-                                
-        //                        // Allow all/all 0.0.0.0/0 rule
-        //                        if (perm.IpProtocol == "-1" && perm.FromPort == 0 && perm.ToPort == 0)
-        //                        {
-        //                            foreach (String range in perm.IpRanges)
-        //                            {
-        //                                DataGridViewRow row = new DataGridViewRow();
-        //                                int rowNumber = dataGridView1.Rows.Add(row);
-        //                                dataGridView1.Rows[rowNumber].Cells["Port"].Value = port;
-        //                                dataGridView1.Rows[rowNumber].Cells["Source"].Value = Source_TB.Lines[i];
-        //                                dataGridView1.Rows[rowNumber].Cells["Destination"].Value = Dest_TB.Lines[i];
-        //                                dataGridView1.Rows[rowNumber].Cells["SGOutbound"].Value = sg.GroupId;
+            return result;
+        }
+        
 
-        //                                if (range == "0.0.0.0/0")
-        //                                {
-        //                                    dataGridView1.Rows[rowNumber].Cells["SGOutboundResult"].Value = "Allow All";
-        //                                    dataGridView1.Rows[rowNumber].Cells["SGOutboundResult"].Style.BackColor = System.Drawing.Color.LightGreen;
-        //                                }
-
-
-        //                            }
-        //                                //found = true;
-        //                            //continue;
-        //                        }// If port is in range
-        //                        else if (perm.FromPort >= p && perm.ToPort <= p)
-        //                        {
-
-        //                            // Check IP ranges
-        //                            foreach (String range in perm.IpRanges)
-        //                            {
-        //                                //if (found) { continue; }
-        //                                DataGridViewRow row = new DataGridViewRow();
-        //                                int rowNumber = dataGridView1.Rows.Add(row);
-        //                                dataGridView1.Rows[rowNumber].Cells["Port"].Value = port;
-        //                                dataGridView1.Rows[rowNumber].Cells["Source"].Value = Source_TB.Lines[i];
-        //                                dataGridView1.Rows[rowNumber].Cells["Destination"].Value = Dest_TB.Lines[i];
-        //                                dataGridView1.Rows[rowNumber].Cells["SGOutbound"].Value = sg.GroupId;
-        //                                // If ip is in cidr range
-        //                                if (IsInCidrRange(DestInstances[i].IpAddress, range))
-        //                                {
-        //                                    //dataGridView1.Rows[rowNumber].Cells["SGOutbound"].Value = sg.GroupId;
-        //                                    dataGridView1.Rows[rowNumber].Cells["SGOutboundResult"].Value = perm.FromPort.ToString() + "-" + perm.ToPort.ToString() + " " + range;
-        //                                    dataGridView1.Rows[rowNumber].Cells["SGOutboundResult"].Style.BackColor = System.Drawing.Color.LightGreen;
-        //                                    found = true;
-        //                                    //continue;
-        //                                }
-        //                                else
-        //                                {
-        //                                    dataGridView1.Rows[rowNumber].Cells["SGOutbound"].Value = sg.GroupId;
-        //                                    dataGridView1.Rows[rowNumber].Cells["SGOutboundResult"].Value = perm.FromPort.ToString() + "-" + perm.ToPort.ToString() + " " + range;
-        //                                }
-        //                            }
-
-
-        //                            // Check SGs
-        //                            foreach (UserIdGroupPair pair in perm.UserIdGroupPairs)
-        //                            {
-        //                                //if (found) { continue; }
-        //                                DataGridViewRow row = new DataGridViewRow();
-        //                                int rowNumber = dataGridView1.Rows.Add(row);
-        //                                dataGridView1.Rows[rowNumber].Cells["Port"].Value = port;
-        //                                dataGridView1.Rows[rowNumber].Cells["Source"].Value = Source_TB.Lines[i];
-        //                                dataGridView1.Rows[rowNumber].Cells["Destination"].Value = Dest_TB.Lines[i];
-        //                                dataGridView1.Rows[rowNumber].Cells["SGOutbound"].Value = sg.GroupId;
-        //                                var foundSG = DestInstances[rowNumber].SecurityGroups.Find(x => x.GroupId == pair.GroupId);
-        //                                if (foundSG != null)
-        //                                {
-        //                                    dataGridView1.Rows[rowNumber].Cells["SGOutbound"].Value = sg.GroupId;
-        //                                    dataGridView1.Rows[rowNumber].Cells["SGOutboundResult"].Value = perm.FromPort.ToString() + "-" + perm.ToPort.ToString() + " " + pair.GroupId;
-        //                                    dataGridView1.Rows[rowNumber].Cells["SGOutboundResult"].Style.BackColor = System.Drawing.Color.LightGreen;
-        //                                    found = true;
-        //                                    //continue;
-        //                                }
-        //                            }
-
-        //                        }
-        //                        else
-        //                        {
-        //                            foreach (String range in perm.IpRanges)
-        //                            {
-        //                                DataGridViewRow row = new DataGridViewRow();
-        //                                int rowNumber = dataGridView1.Rows.Add(row);
-        //                                dataGridView1.Rows[rowNumber].Cells["Port"].Value = port;
-        //                                dataGridView1.Rows[rowNumber].Cells["Source"].Value = Source_TB.Lines[i];
-        //                                dataGridView1.Rows[rowNumber].Cells["Destination"].Value = Dest_TB.Lines[i];
-        //                                dataGridView1.Rows[rowNumber].Cells["SGOutbound"].Value = sg.GroupId;
-        //                                dataGridView1.Rows[rowNumber].Cells["SGOutbound"].Value = sg.GroupId;
-        //                                dataGridView1.Rows[rowNumber].Cells["SGOutboundResult"].Value = perm.FromPort.ToString() + "-" + perm.ToPort.ToString() + " " + range;
-                                        
-        //                            }
-
-        //                            foreach (UserIdGroupPair pair in perm.UserIdGroupPairs)
-        //                            {
-        //                                DataGridViewRow row = new DataGridViewRow();
-        //                                int rowNumber = dataGridView1.Rows.Add(row);
-        //                                dataGridView1.Rows[rowNumber].Cells["Port"].Value = port;
-        //                                dataGridView1.Rows[rowNumber].Cells["Source"].Value = Source_TB.Lines[i];
-        //                                dataGridView1.Rows[rowNumber].Cells["Destination"].Value = Dest_TB.Lines[i];
-        //                                dataGridView1.Rows[rowNumber].Cells["SGOutbound"].Value = sg.GroupId;
-        //                                dataGridView1.Rows[rowNumber].Cells["SGOutbound"].Value = sg.GroupId;
-        //                                dataGridView1.Rows[rowNumber].Cells["SGOutboundResult"].Value = perm.FromPort.ToString() + "-" + perm.ToPort.ToString() + " " + pair.GroupId;
-        //                                found = true;
-                                            
-                                        
-        //                            }
-        //                        }
-                                
-
-        //                    }
-
-                            
-        //                }
-        //            }
-
-        //        }
-        //        else // If not an instance, just an IP
-        //        {
-        //            DataGridViewRow row = new DataGridViewRow();
-        //            int rowNumber = dataGridView1.Rows.Add(row);
-        //            dataGridView1.Rows[rowNumber].Cells["Port"].Value = port;
-        //            dataGridView1.Rows[rowNumber].Cells["Source"].Value = Source_TB.Lines[rowNumber];
-        //            dataGridView1.Rows[rowNumber].Cells["Destination"].Value = Dest_TB.Lines[rowNumber];
-        //            dataGridView1.Rows[rowNumber].Cells["SGOutbound"].Value = "External IP";
-        //        }
-
-
-        //        i++;
-        //    }
-
-        //}
-
-
+        // Build Grid and Analyze Security Groups
         void BuildGridDisplay()
         {
             
@@ -1067,6 +940,19 @@ namespace RouteChecker
 
         }
 
+        // Build Grid and Analyze NACLs
+
+        void BuildNaclGridDisplay()
+        {
+            int looptimes = Math.Max(Math.Max(Source_TB.Lines.Length, Dest_TB.Lines.Length), Port_TB.Lines.Length);
+
+            for (int i = 0; i < looptimes; i++)
+            {
+
+            }
+
+        }
+
 
         
         private static bool IsInCidrRange(string ipAddress, string CidrBlock)
@@ -1097,7 +983,28 @@ namespace RouteChecker
                 DescribeSecurityGroupsResponse secgroups = GetSecurityGroups();
                 SecGroups = secgroups.SecurityGroups;
             }
-            
+
+            if (Nacls == null)
+            {
+                DescribeNetworkAclsResponse nacls = GetNacls();
+                Nacls = nacls.NetworkAcls;
+            }
+            else if (Nacls.Count == 0)
+            {
+                DescribeNetworkAclsResponse nacls = GetNacls();
+                Nacls = nacls.NetworkAcls;
+            }
+
+            //if (Subnets == null)
+            //{
+            //    DescribeSubnetsResponse subnets = GetSubnets();
+            //    Subnets = subnets.Subnets;
+            //}
+            //else if (Subnets.Count == 0)
+            //{
+            //    DescribeSubnetsResponse subnets = GetSubnets();
+            //    Subnets = subnets.Subnets;
+            //}
             
             foreach (string item in Source_TB.Lines)
             {
@@ -1146,6 +1053,7 @@ namespace RouteChecker
             else
             {
                 BuildGridDisplay();
+                BuildNaclGridDisplay();
             }
 
             ProgressBar1.Style = ProgressBarStyle.Continuous;
@@ -1178,6 +1086,8 @@ namespace RouteChecker
             SourceInstances.Clear();
             DestInstances.Clear();
             SecGroups.Clear();
+            Subnets.Clear();
+            Nacls.Clear();
             Cache_BTN.Enabled = false;
 
             Status_LB.Text = "Cache cleared";
